@@ -95,6 +95,7 @@ function drawMessage() {
 async function revealNext() {
   if (changing) return;
   changing = true;
+  playMeow();
   anotherButton.disabled = true;
   shareButton.disabled = true;
   statusElement.textContent = '';
@@ -139,43 +140,32 @@ shareButton.addEventListener('click', async () => {
   }
 });
 
-// Lecture native d'un fichier local, déclenchée directement par le clic.
-// Ce lecteur évite de dépendre du canal Web Audio, sensible au mode silencieux iOS.
-const meowButton = document.querySelector('#meow');
+// Le son démarre directement au clic, avant l'attente de l'animation (Safari iOS).
 const meowStatus = document.querySelector('#meow-status');
 const meowAudio = document.querySelector('#meow-audio');
 let meowAttempt = 0;
 
-function finishMeow() {
-  meowButton.disabled = false;
-  meowButton.classList.remove('is-meowing');
-}
-
 function failMeow() {
-  finishMeow();
   meowStatus.textContent = 'Le son n’a pas pu démarrer. Vérifie le volume et réessaie.';
 }
 
-meowAudio.addEventListener('ended', finishMeow);
 meowAudio.addEventListener('error', failMeow);
-meowAudio.addEventListener('pause', finishMeow);
 
-meowButton.addEventListener('click', () => {
+function playMeow() {
   const attempt = ++meowAttempt;
   meowStatus.textContent = '';
   try {
     meowAudio.pause();
     meowAudio.currentTime = 0;
-    // Ne pas placer d'attente avant play() : Safari exige le geste utilisateur.
     const playback = meowAudio.play();
-    meowButton.classList.add('is-meowing');
     if (playback) playback.catch(() => {
       if (attempt === meowAttempt) failMeow();
     });
   } catch {
     failMeow();
   }
-});
+  // Une erreur ou une attente audio ne bloque jamais la nouvelle surprise.
+}
 
 document.querySelector('#privacy-toggle').addEventListener('click', event => {
   const expanded = event.currentTarget.getAttribute('aria-expanded') === 'true';

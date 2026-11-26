@@ -94,6 +94,6 @@ Les liens sont consultables sur les cartes « Le savais-tu ? » et sont inclus l
 
 La page présente un petit en-tête avec le logo, une surprise aléatoire et ses boutons. Les ingrédients et la conservation sont réunis dans une rubrique native `<details>`, repliée au chargement et utilisable sans JavaScript. Le fond réutilise `logo_transparent.png` en motif diagonal discret via `body::before` (opacité, taille et angle modifiables dans `style.css`). Aucun filtre de catégorie n’est proposé.
 
-## Bouton Miaou
+## Miaou et nouvelle surprise
 
-Le bouton joue le fichier local `audio/miaou.wav` (un court miaulement synthétisé) avec le lecteur audio natif du navigateur. `play()` est appelé directement au clic pour Safari iOS. Aucun son automatique ni service externe. Le bouton reste toujours cliquable : un nouveau clic relance le son, même si une première tentative a été bloquée. Publier aussi le dossier `audio/`. La référence du script est versionnée pour éviter de reprendre la précédente implémentation en cache.
+« Encore une surprise ! » déclenche le fichier local `audio/miaou.wav` et affiche une nouvelle surprise. Le son démarre directement au clic, avant toute attente d’animation pour Safari iOS. Aucune lecture automatique. Une erreur ou un chargement audio bloqué n’empêche pas le changement de message. Le bouton Miaou séparé a été retiré.
