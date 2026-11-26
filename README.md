@@ -89,3 +89,7 @@ Les liens sont consultables sur les cartes « Le savais-tu ? » et sont inclus l
 - Congélation : les [conseils généraux de Land O’Lakes](https://www.landolakes.com/faqs/baking/freezing-guidelines/candy/) couvrent les caramels et le fudge. La page recommande un emballage adapté à la congélation et hermétique, une décongélation dans l’emballage fermé et un essai de texture pour Caramiaou ; le repère général de cette source (jusqu’à six mois au congélateur pour les caramels et fudges) est présenté comme tel, sans le transformer en durée validée pour Caramiaou.
 
 - Source fournie ensuite par l’utilisateur : [Béquet Confections · How to Store Caramel Candy](https://bequetconfections.com/blogs/news/how-to-store-caramel-candy). La page reprend ses repères généraux de 2 à 3 semaines pour les caramels maison sans emballage individuel et de 3 à 6 mois au congélateur avec emballage adapté, sans les annoncer comme une durée validée pour Caramiaou. Les durées de plusieurs mois à température ambiante évoquées ailleurs dans l’article ne sont pas appliquées à notre recette.
+
+## Présentation compacte
+
+La page présente un petit en-tête avec le logo, une surprise aléatoire et ses boutons. Les ingrédients et la conservation sont réunis dans une rubrique native `<details>`, repliée au chargement et utilisable sans JavaScript. Le fond réutilise `logo_transparent.png` en motif diagonal discret via `body::before` (opacité, taille et angle modifiables dans `style.css`). Aucun filtre de catégorie n’est proposé.

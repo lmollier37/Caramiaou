@@ -3,58 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fff4c8">
-  <meta name="description" content="Caramiaou : des caramels, des chats et une surprise à chaque visite. Création de Lucas et Yoann.">
+  <meta name="theme-color" content="#fff4cf">
+  <meta name="description" content="Un caramel, un sourire et une surprise au hasard. Caramiaou, création de Lucas et Yoann.">
   <title>Caramiaou · Du caramel et des miaous</title>
   <link rel="icon" href="./logo_transparent.png" type="image/png">
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="./" aria-label="Caramiaou, accueil">cara<span>miaou</span><span class="brand-star" aria-hidden="true">✳</span></a>
-    <a class="recipe-link" href="#caramels">Nos caramels</a>
-  </header>
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">PETIT CARAMEL, GRAND SOURIRE</p>
-        <h1 id="hero-title">Du caramel.<br>Des miaous.<br><span>Et toi !</span></h1>
-        <p class="intro-text">Une douceur à savourer,<br>une surprise à découvrir. Ça te dit ?</p>
-        <p class="creators">Création de <strong>Lucas et Yoann</strong></p>
-      </div>
-      <div class="hero-art">
-        <span class="art-spark sparkle-one" aria-hidden="true">✳</span>
-        <div class="logo-disc"><img src="./logo_transparent.png" alt="Caramiaou, un chat avec une toque de pâtissier, signé Lucas et Yoann" width="584" height="630" fetchpriority="high"></div>
-        <span class="art-spark sparkle-two" aria-hidden="true">✦</span>
-        <span class="sticker" aria-hidden="true">Attention,<br>chat va être<br><em>gourmand !</em></span>
-      </div>
-    </section>
-    <div class="ribbon" aria-hidden="true"><span>CARAMEL & BONNE HUMEUR</span><b>✳</b><span>ÇA RONRONNE DE BONHEUR</span><b>✳</b><span>CARAMEL & BONNE HUMEUR</span><b>✳</b></div>
-    <section class="surprise-section" aria-labelledby="surprise-title">
-      <div class="section-heading"><p class="eyebrow">LA SURPRISE DU CHEF CHAT</p><h2 id="surprise-title">Déballe ton petit <em>miaou.</em></h2><p>Une blague, une histoire, une anecdote ou un mot doux.<br>Le hasard s’occupe du menu.</p></div>
+  <main class="little-page">
+    <header class="intro">
+      <a class="logo-link" href="./" aria-label="Caramiaou, accueil"><img src="./logo_transparent.png" alt="Caramiaou, le chat pâtissier" width="584" height="630" fetchpriority="high"></a>
+      <p class="creators">Création de <strong>Lucas et Yoann</strong></p>
+      <h1>Un caramel.<br>Un petit <em>miaou.</em></h1>
+      <p class="intro-text">Une surprise au hasard, juste pour le sourire.</p>
+    </header>
+    <section class="surprise-section" aria-label="Ta surprise Caramiaou">
       <div class="candy-scene" id="letter-scene">
         <span class="wrapper wrapper-left" aria-hidden="true"></span><span class="wrapper wrapper-right" aria-hidden="true"></span>
         <article class="surprise-card" id="letter">
           <div class="message-live" aria-live="polite" aria-atomic="true"><span class="category" id="message-category">LE MOT DOUX</span><p id="message">Que ta journée soit fondante de bonheur et croustillante de surprises.</p></div>
-          <a class="fact-source" id="fact-source" hidden target="_blank" rel="noopener noreferrer">La source de cette anecdote <span class="visually-hidden">(nouvel onglet)</span></a>
-          <span class="card-signature" aria-hidden="true">une bouchée de bonne humeur · caramiaou</span>
+          <a class="fact-source" id="fact-source" hidden target="_blank" rel="noopener noreferrer">La source de cette anecdote</a>
+          <span class="card-signature" aria-hidden="true">✳ une bouchée de bonne humeur ✳</span>
         </article>
       </div>
       <div class="message-actions"><button class="primary-button" id="another" type="button"><span aria-hidden="true">✳</span> Encore une surprise !</button><button class="share-button" id="share" type="button">Partager ce petit miaou</button></div>
       <p id="share-status" class="share-status" role="status"></p>
-      <div id="copy-fallback" class="copy-fallback" hidden><label for="copy-text">Copie ce petit miaou pour le partager :</label><textarea id="copy-text" rows="4" readonly></textarea></div>
-      <noscript><p>Ce premier petit mot est pour toi. Active JavaScript pour découvrir les autres surprises.</p></noscript>
+      <div id="copy-fallback" class="copy-fallback" hidden><label for="copy-text">Copie ce petit miaou :</label><textarea id="copy-text" rows="4" readonly></textarea></div>
+      <noscript><p>Active JavaScript pour découvrir les autres surprises.</p></noscript>
     </section>
-    <section class="product-section" id="caramels" aria-labelledby="product-title">
-      <div class="product-intro"><p class="eyebrow">LE COIN DES GOURMANDS</p><h2 id="product-title">Et dans le<br><em>caramel ?</em></h2><p>Des caramels à la texture friable,<br>créés par Lucas et Yoann.</p><div class="mini-candy" aria-hidden="true"><span>cara<br><b>miaou</b></span></div></div>
-      <div class="product-details">
-        <article class="ingredient-card"><span class="info-icon" aria-hidden="true">♡</span><h3>Les ingrédients</h3><p class="ingredient-list">Sucre, <strong>beurre</strong>, <strong>lait condensé sucré</strong>.</p><p class="allergen">Allergène : <strong>lait</strong>.</p></article>
-        <article class="storage-card"><span class="info-icon" aria-hidden="true">✳</span><h3>Pour garder leur douceur</h3><p>Garde ton sachet bien fermé, dans un endroit frais et sec, à l’abri du soleil. Après ouverture, referme-le soigneusement ou utilise une boîte hermétique.</p><dl class="storage-list"><div><dt>À température ambiante</dt><dd>Garde le sachet bien fermé, au frais et au sec. Béquet indique 2 à 3 semaines pour des caramels maison sans emballage individuel : un repère général, à confirmer pour Caramiaou.</dd></div><div><dt>Au réfrigérateur</dt><dd>Si tu les mets au frais, utilise un emballage hermétique pour limiter l’humidité et les odeurs. Le réfrigérateur ne garantit pas à lui seul une conservation plus longue.</dd></div><div><dt>Au congélateur</dt><dd>Les caramels et les fudges se congèlent généralement bien. Utilise un sachet adapté à la congélation, fermé hermétiquement, ou une boîte de congélation. Repère général donné par Béquet : 3 à 6 mois, avec un emballage protecteur et hermétique adapté au congélateur. Cette durée reste à confirmer pour Caramiaou. Laisse le sachet fermé revenir à température ambiante avant de l’ouvrir, pour limiter la condensation. Un essai sur une petite portion permettra de vérifier la texture.</dd></div></dl><p class="storage-note">La durée de conservation propre à Caramiaou reste à confirmer. <a href="https://bequetconfections.com/blogs/news/how-to-store-caramel-candy" target="_blank" rel="noopener noreferrer">Conseils de conservation de Béquet (nouvel onglet)</a>.</p></article>
+    <details class="caramel-info" id="caramels">
+      <summary>Ingrédients & conservation <span class="details-icon" aria-hidden="true"></span></summary>
+      <div class="info-content">
+        <h2>Dans nos caramels</h2>
+        <p>Sucre, <strong>beurre</strong>, <strong>lait condensé sucré</strong>.<br><span class="allergen">Allergène : <strong>lait</strong>.</span></p>
+        <h2>Pour les garder</h2>
+        <dl class="storage-list">
+          <div><dt>À température ambiante · 2 à 3 semaines*</dt><dd>Sachet bien fermé, au frais et au sec, à l’abri du soleil.</dd></div>
+          <div><dt>Au congélateur · 3 à 6 mois*</dt><dd>Emballage de congélation hermétique. Laisse décongeler le sachet fermé avant de l’ouvrir.</dd></div>
+        </dl>
+        <p class="storage-note">* Durées indicatives. <a href="https://bequetconfections.com/blogs/news/how-to-store-caramel-candy" target="_blank" rel="noopener noreferrer">Source : Béquet</a>.</p>
       </div>
-    </section>
-    <section class="closing"><span aria-hidden="true">✳</span><p>La vie est plus chouette<br>avec un peu de <em>caramiaou.</em></p><span aria-hidden="true">✳</span></section>
+    </details>
+    <footer><span>Fait pour les pauses gourmandes ♡</span><button id="privacy-toggle" type="button" aria-expanded="false" aria-controls="privacy">À propos</button><p id="privacy" hidden>Aucun compte, aucune publicité, aucun cookie ni outil de suivi. Le tirage se fait dans ton navigateur. Les liens des anecdotes ouvrent les sites sources. L’hébergeur peut conserver des journaux techniques de connexion.</p></footer>
   </main>
-  <footer><div><a href="./" class="footer-brand">caramiaou</a><p>Création de Lucas et Yoann</p></div><div class="footer-meta"><span>Du caramel et de la bonne humeur.</span><button id="privacy-toggle" type="button" aria-expanded="false" aria-controls="privacy">À propos de cette page</button></div><p id="privacy" hidden>Aucun compte, aucune publicité, aucun cookie ni outil de suivi sur cette page. Les surprises sont tirées au sort dans ton navigateur. Les liens des anecdotes mènent aux sites de leurs sources. L’hébergeur peut conserver des journaux techniques de connexion.</p></footer>
 </body>
 </html>

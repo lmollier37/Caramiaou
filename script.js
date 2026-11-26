@@ -246,7 +246,7 @@ function drawMessage() {
   sourceLink.hidden = !source;
   if (source) {
     sourceLink.href = source.url;
-    sourceLink.textContent = `Source : ${source.label} (nouvel onglet)`;
+    sourceLink.textContent = `Source : ${source.label}`;
   } else {
     sourceLink.removeAttribute('href');
   }
