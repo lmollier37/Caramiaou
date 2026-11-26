@@ -8,55 +8,32 @@ const CATEGORIES = { blague: 'LA PETITE BLAGUE', mot: 'LE MOT DOUX', histoire: '
 /* Format : catégorie | texte | source facultative. Une surprise par ligne. */
 const MESSAGES = `
 blague|J’ai acheté un panier à mon chat. Il dort dans le carton. Le panier sert à ranger le carton.
-blague|Mon chat m’aide à travailler : il maintient la touche « fffffffffffff ».
 blague|J’ai demandé à mon chat de garder ma place. Ça fait trois heures qu’il la garde.
 blague|Mon chat ne fait pas tomber les objets. Il vérifie que la gravité fonctionne toujours.
 blague|Je voulais garder un caramel pour demain. C’était une belle idée, pendant huit secondes.
 blague|Mon chat aime le partage : à lui l’oreiller, à moi les deux centimètres qui restent.
 blague|J’ai dit « fais comme chez toi » à mon chat. Il m’a demandé depuis quand c’était chez moi.
-blague|Mon chat a un réveil intégré. Je cherche encore le bouton « dimanche ».
-blague|Un caramel chez le coiffeur : « Un petit carré, s’il vous plaît. »
-blague|J’ai demandé à mon chat de mettre la table. Il s’est mis dessus. Consigne presque respectée.
-blague|Mon chat a regardé le prix de son arbre à chat. Puis il est monté sur l’étagère.
+blague|Un caramel chez le coiffeur : « Un coupe carré, s’il vous plaît. »
 blague|Que dit un caramel après une journée en cuisine ? « Je suis cuit. »
 blague|J’ai caché les caramels pour ne pas les manger. Malheureusement, je sais où.
-blague|Mon chat adore les portes ouvertes. Surtout celles qu’il vient de me faire fermer.
-blague|J’ai commencé un puzzle de mille pièces. Mon chat préfère la version « mille endroits ».
-blague|Mon chat est très ponctuel : il réclame toujours son repas une heure en avance.
 blague|« Tu veux un caramel ? » Voilà. Un discours court qui met tout le monde d’accord.
-blague|Mon chat ne perd pas ses poils. Il transforme mes vêtements en édition limitée.
 blague|J’ai compté les caramels pour savoir combien il en restait. Maintenant, il en reste deux de moins.
-blague|Mon chat fait du télétravail : il occupe mon bureau et me regarde faire le reste.
 mot|Le temps d’un caramel, le reste peut attendre.
 mot|Un petit carré de douceur dans une journée qui va trop vite.
-mot|Que ton cœur ronronne un peu aujourd’hui.
-mot|Tu mérites aussi la douceur que tu offres aux autres.
 mot|Les jours gris aussi ont droit à leur carré doré.
 mot|Pas besoin d’une grande occasion pour une petite joie.
 mot|Tu peux garder le dernier caramel pour toi. On ne dira rien.
 mot|Un caramel pour la pause. Un sourire pour la suite.
-mot|Fais comme le chat au soleil : profite du coin de lumière.
 mot|Une douceur offerte, c’est une petite façon de dire « j’ai pensé à toi ».
-mot|Une miette de joie reste de la joie.
-mot|Prends ton temps. Même les bonnes recettes en ont besoin.
-mot|Une pause ne se mérite pas. Elle se prend.
 mot|Les meilleurs moments ne sont pas toujours les plus grands.
 mot|Aujourd’hui, laisse une petite place à ce qui te fait plaisir.
 mot|Du caramel sur la langue, un peu moins de choses dans la tête.
-histoire|Le chat trouva une toque trop grande et s’endormit dedans. Depuis, la cuisine compte un chef et un chef de sieste.
-histoire|On avait apporté des caramels pour une visite de dix minutes. Deux heures plus tard, le café était froid et personne ne regardait l’heure.
 histoire|Un petit caramel était de travers. On le choisit en premier : « Celui-là, on dirait un cœur. » Il n’avait jamais remarqué.
 histoire|Le dernier caramel se croyait oublié. En réalité, quelqu’un le gardait pour toi.
-histoire|Le chat s’allongea sur la liste des choses à faire. Pendant dix minutes, il n’y eut plus rien à faire. Personne ne s’en plaignit.
 histoire|« Je n’ai rien apporté », dit-elle en posant un sachet de caramels sur la table. C’était pourtant exactement ce qu’il fallait.
 histoire|Deux voisins se croisaient sans se parler. Un jour, l’un proposa un caramel. Maintenant, ils connaissent le prénom de leurs chats.
-histoire|Le chat entra dans un carton trop petit. Il dépassait de partout, mais avait l’air ravi. Le confort n’était visiblement pas une affaire de dimensions.
 histoire|La boîte de caramels passa de main en main. Quand elle fut vide, la conversation, elle, avait encore de quoi durer.
 histoire|On avait réservé le plus joli caramel pour la photo. Puis quelqu’un l’avait mangé. La photo montra trois personnes en train de rire.
-fait|Caramélisation et réaction de Maillard sont différentes. Dans les confiseries au lait, la réaction de Maillard peut aussi contribuer au brunissement.|caramel
-fait|Quand le sucre caramélise, il ne change pas seulement de couleur : de nouvelles molécules lui donnent aussi ses arômes.|caramel
-fait|De petites cavités sur certaines papilles de la langue du chat recueillent la salive et la déposent sur les poils pendant sa toilette.|chat
-fait|La langue du chat a inspiré une brosse expérimentale avec des papilles imprimées en 3D. Même sa toilette donne des idées aux scientifiques.|chat
 `.trim().split('\n').map(line => {
   const [category, text, source] = line.split('|');
   return { category, text, source };
