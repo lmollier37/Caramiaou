@@ -34,6 +34,19 @@ histoire|« Je n’ai rien apporté », dit-elle en posant un sachet de caramels
 histoire|Deux voisins se croisaient sans se parler. Un jour, l’un proposa un caramel. Maintenant, ils connaissent le prénom de leurs chats.
 histoire|La boîte de caramels passa de main en main. Quand elle fut vide, la conversation, elle, avait encore de quoi durer.
 histoire|On avait réservé le plus joli caramel pour la photo. Puis quelqu’un l’avait mangé. La photo montra trois personnes en train de rire.
+blague|J’ai partagé mes caramels en deux parts égales : ceux que je mange maintenant et ceux que je mange dans cinq minutes.
+blague|Mon chat m’a apporté un cadeau. Je lui avais pourtant expliqué que je préférais les caramels aux souris.
+blague|J’ai ouvert le sachet sans faire de bruit. Enfin, c’est ce que je croyais avant de voir trois têtes se retourner.
+blague|J’ai mis les caramels dans une boîte à couture. Pour une fois, tout le monde a été ravi de ne pas y trouver de fil.
+mot|Il y a des « je t’aime » qui se disent avec un petit sachet.
+mot|Que cette journée te laisse un souvenir aussi doux que cette bouchée.
+mot|Un petit plaisir n’est pas une petite chose quand il arrive au bon moment.
+mot|Certains jours, le bonheur tient entre deux doigts.
+mot|Un sachet à ouvrir, une conversation à prolonger.
+histoire|Il restait deux caramels. Chacun proposa de laisser le dernier à l’autre. Ils finirent par les manger en même temps, pour ne vexer personne.
+histoire|Elle glissa un caramel dans la poche de son manteau avant de partir. Le soir, elle le retrouva avec un mot : « Pour le retour. » Quelqu’un avait eu la même idée.
+histoire|Au bureau, une boîte portait l’étiquette « En cas d’urgence ». À l’intérieur : des caramels. Ce jour-là, il y eut beaucoup d’urgences.
+histoire|Il apportait toujours des caramels à sa grand-maman. Un jour, elle lui avoua qu’elle en achetait aussi. « Les tiens, c’est différent. Ils arrivent avec toi. »
 `.trim().split('\n').map(line => {
   const [category, text, source] = line.split('|');
   return { category, text, source };

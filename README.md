@@ -16,7 +16,7 @@ Ouvrir ensuite http://127.0.0.1:8000. `Ctrl+C` arrête le serveur. Pour tester l
 
 ## Fonctionnement
 
-- 50 surprises en français, tirées au hasard à l’arrivée : 20 blagues, 16 mots doux, 10 mini-histoires fictives et 4 anecdotes sourcées. Aucun choix de catégorie.
+- 47 surprises en français : 27 conservées après sélection, puis 20 nouvelles propositions ajoutées en fin de liste pour un prochain tri (21 blagues, 16 mots doux et 10 mini-histoires fictives au total). Tirage au hasard, sans choix de catégorie.
 - Un sac mélangé évite les répétitions pendant toute la visite, jusqu’à épuisement des messages. Aucun doublon immédiat au passage au cycle suivant.
 - Une nouvelle ouverture effectue un nouveau tirage indépendant : elle peut retrouver par hasard un message d’une visite précédente.
 - Partage du texte exact par le menu natif si disponible, sinon copie. Une zone de sélection apparaît si la copie automatique est refusée.
