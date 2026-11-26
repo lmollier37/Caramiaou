@@ -96,4 +96,4 @@ La page présente un petit en-tête avec le logo, une surprise aléatoire et ses
 
 ## Bouton Miaou
 
-Le bouton « Miaou ! » joue un court miaulement synthétisé avec Web Audio, uniquement au clic. Aucun enregistrement ni téléchargement externe. Le volume est modéré, les clics simultanés sont bloqués et le contexte audio est fermé après lecture. Pour un vrai enregistrement de chat, on pourra remplacer cette synthèse par un fichier audio local autorisé.
+Le bouton joue le fichier local `audio/miaou.wav` (un court miaulement synthétisé) avec le lecteur audio natif du navigateur. `play()` est appelé directement au clic pour Safari iOS. Aucun son automatique ni service externe. Le bouton reste toujours cliquable : un nouveau clic relance le son, même si une première tentative a été bloquée. Publier aussi le dossier `audio/`. La référence du script est versionnée pour éviter de reprendre la précédente implémentation en cache.

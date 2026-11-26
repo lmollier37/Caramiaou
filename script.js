@@ -139,71 +139,41 @@ shareButton.addEventListener('click', async () => {
   }
 });
 
-// Petit « miaou » synthétisé localement : aucun fichier ni service externe.
-// L'audio ne démarre qu'après un clic, jamais à l'ouverture de la page.
+// Lecture native d'un fichier local, déclenchée directement par le clic.
+// Ce lecteur évite de dépendre du canal Web Audio, sensible au mode silencieux iOS.
 const meowButton = document.querySelector('#meow');
 const meowStatus = document.querySelector('#meow-status');
-let meowing = false;
+const meowAudio = document.querySelector('#meow-audio');
+let meowAttempt = 0;
 
-meowButton.addEventListener('click', async () => {
-  if (meowing) return;
-  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextClass) {
-    meowStatus.textContent = 'Ce navigateur ne peut pas jouer le petit miaou.';
-    return;
-  }
+function finishMeow() {
+  meowButton.disabled = false;
+  meowButton.classList.remove('is-meowing');
+}
 
-  let context;
-  const finish = () => {
-    meowing = false;
-    meowButton.disabled = false;
-    meowButton.classList.remove('is-meowing');
-    if (context && context.state !== 'closed') context.close().catch(() => {});
-  };
+function failMeow() {
+  finishMeow();
+  meowStatus.textContent = 'Le son n’a pas pu démarrer. Vérifie le volume et réessaie.';
+}
 
+meowAudio.addEventListener('ended', finishMeow);
+meowAudio.addEventListener('error', failMeow);
+meowAudio.addEventListener('pause', finishMeow);
+
+meowButton.addEventListener('click', () => {
+  const attempt = ++meowAttempt;
+  meowStatus.textContent = '';
   try {
-    meowing = true;
-    meowButton.disabled = true;
-    meowStatus.textContent = '';
-    context = new AudioContextClass();
-    if (context.state === 'suspended') await context.resume();
-    const now = context.currentTime;
-    const voice = context.createOscillator();
-    const vowel = context.createBiquadFilter();
-    const soften = context.createBiquadFilter();
-    const volume = context.createGain();
-
-    voice.type = 'sawtooth';
-    voice.frequency.setValueAtTime(610, now);
-    voice.frequency.exponentialRampToValueAtTime(890, now + .13);
-    voice.frequency.exponentialRampToValueAtTime(720, now + .3);
-    voice.frequency.exponentialRampToValueAtTime(430, now + .8);
-
-    // Le filtre mobile dessine la voyelle « iaou » pendant la descente.
-    vowel.type = 'bandpass';
-    vowel.Q.value = 2.6;
-    vowel.frequency.setValueAtTime(1800, now);
-    vowel.frequency.exponentialRampToValueAtTime(1250, now + .2);
-    vowel.frequency.exponentialRampToValueAtTime(550, now + .8);
-    soften.type = 'lowpass';
-    soften.frequency.value = 2700;
-    volume.gain.setValueAtTime(0, now);
-    volume.gain.linearRampToValueAtTime(.2, now + .07);
-    volume.gain.linearRampToValueAtTime(.13, now + .35);
-    volume.gain.exponentialRampToValueAtTime(.001, now + .85);
-    volume.gain.linearRampToValueAtTime(0, now + .9);
-
-    voice.connect(vowel);
-    vowel.connect(soften);
-    soften.connect(volume);
-    volume.connect(context.destination);
-    voice.onended = finish;
+    meowAudio.pause();
+    meowAudio.currentTime = 0;
+    // Ne pas placer d'attente avant play() : Safari exige le geste utilisateur.
+    const playback = meowAudio.play();
     meowButton.classList.add('is-meowing');
-    voice.start(now);
-    voice.stop(now + .92);
+    if (playback) playback.catch(() => {
+      if (attempt === meowAttempt) failMeow();
+    });
   } catch {
-    finish();
-    meowStatus.textContent = 'Le son n’a pas pu démarrer. Réessaie avec le son activé.';
+    failMeow();
   }
 });
 

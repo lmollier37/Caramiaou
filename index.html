@@ -8,7 +8,7 @@
   <title>Caramiaou · Du caramel et des miaous</title>
   <link rel="icon" href="./logo_transparent.png" type="image/png">
   <link rel="stylesheet" href="./style.css">
-  <script src="./script.js" defer></script>
+  <script src="./script.js?v=audio2" defer></script>
 </head>
 <body>
   <main class="little-page">
@@ -28,6 +28,7 @@
         </article>
       </div>
       <div class="message-actions"><button class="primary-button" id="another" type="button"><span aria-hidden="true">✳</span> Encore une surprise !</button><div class="secondary-actions"><button class="meow-button" id="meow" type="button" aria-label="Écouter un petit miaulement"><span aria-hidden="true">🐾</span> Miaou !</button><button class="share-button" id="share" type="button">Partager ce petit miaou</button></div></div>
+      <audio id="meow-audio" src="./audio/miaou.wav" preload="none"></audio>
       <p id="meow-status" class="share-status" role="status"></p>
       <p id="share-status" class="share-status" role="status"></p>
       <div id="copy-fallback" class="copy-fallback" hidden><label for="copy-text">Copie ce petit miaou :</label><textarea id="copy-text" rows="4" readonly></textarea></div>
