@@ -139,6 +139,74 @@ shareButton.addEventListener('click', async () => {
   }
 });
 
+// Petit « miaou » synthétisé localement : aucun fichier ni service externe.
+// L'audio ne démarre qu'après un clic, jamais à l'ouverture de la page.
+const meowButton = document.querySelector('#meow');
+const meowStatus = document.querySelector('#meow-status');
+let meowing = false;
+
+meowButton.addEventListener('click', async () => {
+  if (meowing) return;
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) {
+    meowStatus.textContent = 'Ce navigateur ne peut pas jouer le petit miaou.';
+    return;
+  }
+
+  let context;
+  const finish = () => {
+    meowing = false;
+    meowButton.disabled = false;
+    meowButton.classList.remove('is-meowing');
+    if (context && context.state !== 'closed') context.close().catch(() => {});
+  };
+
+  try {
+    meowing = true;
+    meowButton.disabled = true;
+    meowStatus.textContent = '';
+    context = new AudioContextClass();
+    if (context.state === 'suspended') await context.resume();
+    const now = context.currentTime;
+    const voice = context.createOscillator();
+    const vowel = context.createBiquadFilter();
+    const soften = context.createBiquadFilter();
+    const volume = context.createGain();
+
+    voice.type = 'sawtooth';
+    voice.frequency.setValueAtTime(610, now);
+    voice.frequency.exponentialRampToValueAtTime(890, now + .13);
+    voice.frequency.exponentialRampToValueAtTime(720, now + .3);
+    voice.frequency.exponentialRampToValueAtTime(430, now + .8);
+
+    // Le filtre mobile dessine la voyelle « iaou » pendant la descente.
+    vowel.type = 'bandpass';
+    vowel.Q.value = 2.6;
+    vowel.frequency.setValueAtTime(1800, now);
+    vowel.frequency.exponentialRampToValueAtTime(1250, now + .2);
+    vowel.frequency.exponentialRampToValueAtTime(550, now + .8);
+    soften.type = 'lowpass';
+    soften.frequency.value = 2700;
+    volume.gain.setValueAtTime(0, now);
+    volume.gain.linearRampToValueAtTime(.2, now + .07);
+    volume.gain.linearRampToValueAtTime(.13, now + .35);
+    volume.gain.exponentialRampToValueAtTime(.001, now + .85);
+    volume.gain.linearRampToValueAtTime(0, now + .9);
+
+    voice.connect(vowel);
+    vowel.connect(soften);
+    soften.connect(volume);
+    volume.connect(context.destination);
+    voice.onended = finish;
+    meowButton.classList.add('is-meowing');
+    voice.start(now);
+    voice.stop(now + .92);
+  } catch {
+    finish();
+    meowStatus.textContent = 'Le son n’a pas pu démarrer. Réessaie avec le son activé.';
+  }
+});
+
 document.querySelector('#privacy-toggle').addEventListener('click', event => {
   const expanded = event.currentTarget.getAttribute('aria-expanded') === 'true';
   event.currentTarget.setAttribute('aria-expanded', String(!expanded));

@@ -93,3 +93,7 @@ Les liens sont consultables sur les cartes « Le savais-tu ? » et sont inclus l
 ## Présentation compacte
 
 La page présente un petit en-tête avec le logo, une surprise aléatoire et ses boutons. Les ingrédients et la conservation sont réunis dans une rubrique native `<details>`, repliée au chargement et utilisable sans JavaScript. Le fond réutilise `logo_transparent.png` en motif diagonal discret via `body::before` (opacité, taille et angle modifiables dans `style.css`). Aucun filtre de catégorie n’est proposé.
+
+## Bouton Miaou
+
+Le bouton « Miaou ! » joue un court miaulement synthétisé avec Web Audio, uniquement au clic. Aucun enregistrement ni téléchargement externe. Le volume est modéré, les clics simultanés sont bloqués et le contexte audio est fermé après lecture. Pour un vrai enregistrement de chat, on pourra remplacer cette synthèse par un fichier audio local autorisé.
