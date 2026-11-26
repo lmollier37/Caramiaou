@@ -1,6 +1,7 @@
 /* Palette bonbon fruitée choisie pour Caramiaou. */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
+  color-scheme: only light;
   --background: #FF5FA2;
   --panel: #FFA6D1;
   --caramel: #FFD36E;
@@ -108,27 +109,4 @@ footer button { border: 0; background: none; color: inherit; padding: 8px 0; fon
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-}
-
-/* Version sombre dessinée pour la palette bonbon, sans inversion globale. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #291427;
-    --panel: #45243E;
-    --caramel: #433151;
-    --mint: #7CE8D5;
-    --blue: #A8B0FF;
-    --wrapper-light: #7CE8D5;
-    --wrapper-stripe: #A8B0FF;
-    --button-hover: #C0C6FF;
-    --ink: #FFF0F7;
-    --muted: #E7C4D8;
-    --outline: #AD80AD;
-    --border: #F6BBDD45;
-    --shadow: #10071165;
-    --solid-shadow: #190D20;
-    --logo-filter: brightness(0) invert(1);
-    --pattern-opacity: .22;
-  }
-  h1 em { color: #FFA6D1; }
 }
