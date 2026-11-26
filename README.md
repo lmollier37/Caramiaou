@@ -97,3 +97,9 @@ La page présente un petit en-tête avec le logo, une surprise aléatoire et ses
 ## Miaou et nouvelle surprise
 
 « Encore une surprise ! » déclenche le fichier local `audio/miaou.wav` et affiche une nouvelle surprise. Le son démarre directement au clic, avant toute attente d’animation pour Safari iOS. Aucune lecture automatique. Une erreur ou un chargement audio bloqué n’empêche pas le changement de message. Le bouton Miaou séparé a été retiré.
+
+## Couleurs sur mobile
+
+Deux palettes suivent automatiquement `prefers-color-scheme` : la palette bonbon rose en mode clair et une version prune/violette avec des accents pastel en mode sombre. Le logo principal et le motif deviennent blancs via un filtre CSS, sans modifier les images. La couleur de la barre du navigateur suit aussi le thème lorsque le navigateur le permet.
+
+La balise `darkreader-lock` demande à Dark Reader de laisser le site gérer ses deux palettes pour éviter une seconde transformation. Les inversions forcées et réglages d’accessibilité du téléphone restent contrôlés par le visiteur ; aucun mode de contraste forcé n’est désactivé par CSS.

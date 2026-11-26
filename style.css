@@ -1,6 +1,6 @@
 /* Palette bonbon fruitée choisie pour Caramiaou. */
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   --background: #FF5FA2;
   --panel: #FFA6D1;
   --caramel: #FFD36E;
@@ -11,15 +11,20 @@
   --button-hover: #8390FF;
   --ink: #231B40;
   --muted: #513550;
+  --button-ink: #231B40;
+  --outline: #231B40;
+  --solid-shadow: #231B40;
+  --logo-filter: none;
+  --pattern-opacity: .6;
   --border: #231B4038;
   --shadow: #231B401C;
   --sans: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
 }
 * { box-sizing: border-box; }
-html { min-height: 100%; }
+html { min-height: 100%; background-color: var(--background); color: var(--ink); }
 body { margin: 0; min-height: 100vh; background: var(--background); color: var(--ink); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; isolation: isolate; }
 /* Une seule image réutilisée : le motif suit une diagonale et reste visible autour du panneau. */
-body::before { content: ''; position: fixed; inset: -100vmax; background-image: url('./logo_transparent.png'); background-size: 175px auto; background-repeat: repeat; opacity: .6; transform: rotate(-24deg); pointer-events: none; z-index: -1; }
+body::before { content: ''; position: fixed; inset: -100vmax; background-image: url('./logo_transparent.png'); background-size: 175px auto; background-repeat: repeat; opacity: var(--pattern-opacity); filter: var(--logo-filter); transform: rotate(-24deg); pointer-events: none; z-index: -1; }
 button, a, summary { -webkit-tap-highlight-color: transparent; }
 button { font: inherit; cursor: pointer; }
 button:focus-visible, a:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
@@ -28,7 +33,7 @@ a { color: inherit; }
 .little-page { width: min(100% - 48px, 550px); margin: 30px auto; padding: 25px 35px 16px; background: var(--panel); border: 1.5px solid var(--border); border-radius: 28px; box-shadow: 0 15px 55px var(--shadow); }
 .intro { text-align: center; }
 .logo-link { display: block; width: 145px; margin: 0 auto; }
-.logo-link img { display: block; width: 100%; height: auto; }
+.logo-link img { display: block; width: 100%; height: auto; filter: var(--logo-filter); }
 .creators { font-size: 12px; margin: 8px 0 17px; color: var(--muted); }
 h1 { margin: 0; font-size: clamp(32px, 6vw, 40px); line-height: 1.04; font-weight: 850; letter-spacing: -.065em; }
 h1 em { font-family: Georgia, serif; font-weight: 600; color: var(--ink); }
@@ -38,8 +43,8 @@ h1 em { font-family: Georgia, serif; font-weight: 600; color: var(--ink); }
 .wrapper { position: absolute; top: 23%; width: 32px; height: 54%; background: repeating-linear-gradient(80deg, var(--wrapper-light) 0px, var(--wrapper-light) 10px, var(--wrapper-stripe) 11px, var(--wrapper-stripe) 13px); z-index: -1; }
 .wrapper-left { left: -24px; clip-path: polygon(0 0,100% 23%,100% 77%,0 100%,9% 75%,0 50%,9% 25%); transform: rotate(-5deg); }
 .wrapper-right { right: -24px; clip-path: polygon(0 23%,100% 0,91% 25%,100% 50%,91% 75%,100% 100%,0 77%); transform: rotate(5deg); }
-.surprise-card { min-height: 210px; padding: 21px 23px 15px; border: 1.5px solid var(--ink); background: var(--caramel); border-radius: 15px; box-shadow: 4px 5px 0 var(--ink); display: flex; flex-direction: column; justify-content: space-between; transform: rotate(-1deg); transition: opacity .18s, transform .18s; }
-.category { display: inline-block; padding: 3px 10px; border: 1px solid var(--border); border-radius: 20px; background: var(--mint); font-size: 10px; font-weight: 800; letter-spacing: .07em; }
+.surprise-card { min-height: 210px; padding: 21px 23px 15px; border: 1.5px solid var(--outline); background: var(--caramel); border-radius: 15px; box-shadow: 4px 5px 0 var(--solid-shadow); display: flex; flex-direction: column; justify-content: space-between; transform: rotate(-1deg); transition: opacity .18s, transform .18s; }
+.category { display: inline-block; padding: 3px 10px; border: 1px solid var(--border); border-radius: 20px; background: var(--mint); color: var(--button-ink); font-size: 10px; font-weight: 800; letter-spacing: .07em; }
 #message { margin: 18px 0 21px; font-size: 23px; font-weight: 700; line-height: 1.4; letter-spacing: -.035em; overflow-wrap: break-word; white-space: pre-line; }
 .card-signature { display: block; border-top: 1px dashed var(--border); padding-top: 10px; font-size: 10px; letter-spacing: .025em; }
 .fact-source { align-self: center; font-size: 12px; margin: -5px 0 14px; text-underline-offset: 3px; }
@@ -47,10 +52,10 @@ h1 em { font-family: Georgia, serif; font-weight: 600; color: var(--ink); }
 .candy-scene.is-arriving .surprise-card { animation: unwrap .45s ease-out both; }
 @keyframes unwrap { from { opacity: 0; transform: translateY(10px) rotate(2deg) scale(.97); } to { opacity: 1; transform: rotate(-1deg); } }
 .message-actions { display: flex; flex-direction: column; align-items: center; gap: 7px; margin-top: 25px; }
-.primary-button { display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid var(--ink); border-radius: 35px; padding: 12px 23px; background: var(--blue); color: var(--ink); font-size: 15px; font-weight: 700; box-shadow: 2px 3px 0 var(--ink); transition: transform .15s, box-shadow .15s, background-color .15s; }
-.primary-button span { color: var(--ink); font-size: 23px; line-height: 1; }
-.primary-button:hover { background: var(--button-hover); transform: translateY(-2px); box-shadow: 2px 5px 0 var(--ink); }
-.primary-button:active { transform: translate(1px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.primary-button { display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid var(--outline); border-radius: 35px; padding: 12px 23px; background: var(--blue); color: var(--button-ink); font-size: 15px; font-weight: 700; box-shadow: 2px 3px 0 var(--solid-shadow); transition: transform .15s, box-shadow .15s, background-color .15s; }
+.primary-button span { color: var(--button-ink); font-size: 23px; line-height: 1; }
+.primary-button:hover { background: var(--button-hover); transform: translateY(-2px); box-shadow: 2px 5px 0 var(--solid-shadow); }
+.primary-button:active { transform: translate(1px, 2px); box-shadow: 1px 1px 0 var(--solid-shadow); }
 button:disabled { cursor: wait; opacity: .7; }
 .share-button { padding: 8px; border: 0; background: none; color: var(--ink); font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
 .share-status { margin: 0; color: var(--ink); font-size: 13px; }
@@ -78,7 +83,8 @@ footer { display: flex; justify-content: space-between; align-items: center; fle
 footer button { border: 0; background: none; color: inherit; padding: 8px 0; font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
 #privacy { width: 100%; margin: 7px 0 0; font-size: 12px; line-height: 1.6; }
 @media (max-width: 520px) {
-  body::before { background-size: 120px auto; opacity: .32; }
+  :root { --pattern-opacity: .32; }
+  body::before { background-size: 120px auto; }
   .little-page { width: calc(100% - 36px); margin: 18px auto; padding: 21px 23px 13px; border-radius: 22px; }
   .logo-link { width: 125px; }
   .creators { margin: 7px 0 16px; font-size: 11px; }
@@ -102,4 +108,27 @@ footer button { border: 0; background: none; color: inherit; padding: 8px 0; fon
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Version sombre dessinée pour la palette bonbon, sans inversion globale. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #291427;
+    --panel: #45243E;
+    --caramel: #433151;
+    --mint: #7CE8D5;
+    --blue: #A8B0FF;
+    --wrapper-light: #7CE8D5;
+    --wrapper-stripe: #A8B0FF;
+    --button-hover: #C0C6FF;
+    --ink: #FFF0F7;
+    --muted: #E7C4D8;
+    --outline: #AD80AD;
+    --border: #F6BBDD45;
+    --shadow: #10071165;
+    --solid-shadow: #190D20;
+    --logo-filter: brightness(0) invert(1);
+    --pattern-opacity: .22;
+  }
+  h1 em { color: #FFA6D1; }
 }
